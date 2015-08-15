@@ -19,13 +19,12 @@
 #
 
 #
-# Create matrices with inverse caching
+# Create matrices with inverse caching ability
 #
 makeCacheMatrix <- function(x = matrix()) {      
 
   i <- NULL                  # the inverse has not been calculated
-                             # x is the name of the parameter
-                  
+
   #
   # Link a new matrix y as a new value for x in this closure
   # This particular method could be safely removed for most usages
@@ -35,7 +34,6 @@ makeCacheMatrix <- function(x = matrix()) {
     i <<- NULL               # causes the inverse to be outdated
   }
   
-
   #
   # Get the value of the matrix
   #
@@ -64,8 +62,9 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
-
+#
+# Invert cacheable matrices, returning the inverse while storing its value
+#
 cacheSolve <- function(x, ...) {
 
   if(!is.null(x$getinv())) { # if there is already an inverse matrix          
